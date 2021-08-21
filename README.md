@@ -1,2 +1,2 @@
 # ricky-and-morty-api
-Exibe os personagens do seriado Rick &amp; Morty
+Exibe os personagens do seriado Rick & Morty
