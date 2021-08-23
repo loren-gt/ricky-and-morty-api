@@ -88,20 +88,19 @@ export default function App() {
     )
   }
 
-return (
-  <div className="content">
-    <div className="container">
-      <div className="logo-content">
-        <img src={LogoRick} alt="Logo"  height="100px" width="auto"/>
+  return (
+    <div className="content">
+      <div className="container">
+        <div className="logo-content">
+          <img src={LogoRick} alt="Logo"  height="100px" width="auto"/>
+        </div>
+        <div className="cards-content">
+            {data.map(({id, name, image}) => (
+              <div className="card" key={id}>
+                <img src={image} alt={name} width="180px" height="auto" />
+                <h4>{name} </h4>
+              </div>
+            ))}
+        </div>
       </div>
-      <div className="cards-content">
-          {data.map(({id, name, image}) => (
-            <div className="card" key={id}>
-              <img src={image} alt={name} width="180px" height="auto" />
-              <h4>{name} </h4>
-            </div>
-          ))}
-      </div>
-    </div>
-  </div>
-)}
+    </div>)}
