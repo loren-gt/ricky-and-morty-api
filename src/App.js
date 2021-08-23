@@ -1,5 +1,9 @@
 // Opção 1 - Classe:
 // import React, { Component } from 'react';
+// import './App.css';
+
+// import LoadImage from './img/giphy.webp';
+// import LogoRick from './img/logo.png';
 
 // const axios = require('axios').default;
 
@@ -29,23 +33,29 @@
 
 //   render() {
 //     const { characters, isLoading } = this.state;
+    
+//     if (isLoading) {
 //     return (
-//       <>
-//         <h1>Conheça os personagens de Rick and Morty:</h1>
-//         <>
-//           {isLoading ? <h2>Carregando...</h2> :
-//             characters.map((character) => (
-//               <React.Fragment key={character.id}>
-//                 <h3>{character.name}</h3>
-//                 <img src={character.image} alt={character.name} />
-//               </React.Fragment>
-//             ))
-//           }
-//         </>
-//       </>
-//     );
-// }
-// }
+//       <img src={LoadImage} alt="loading" />
+//     )}
+
+//     return (
+//       <div className="content">
+//         <div className="container">
+//           <div className="logo-content">
+//             <img src={LogoRick} alt="Logo"  height="100px" width="auto"/>
+//           </div>
+//           <div className="cards-content">
+//               {characters.map(({id, name, image}) => (
+//                 <div className="card" key={id}>
+//                   <img src={image} alt={name} width="180px" height="auto" />
+//                   <h4>{name} </h4>
+//                 </div>
+//               ))}
+//           </div>
+//         </div>
+//       </div>
+//     )}}
 
 // export default App;
 
@@ -53,6 +63,11 @@
 
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
+
+import './App.css';
+
+import LoadImage from './img/giphy.webp';
+import LogoRick from './img/logo.png';
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -67,15 +82,26 @@ export default function App() {
     .catch((error) => console.log(error))
   }, [])
 
+  if (isLoading) {
+    return (
+      <img src={LoadImage} alt="loading" />
+    )
+  }
+
 return (
-  <>
-    <h1>Conheça os personagens de Rick and Morty:</h1>
-     {isLoading ? <h2>Carregando...</h2> :
-      data.map(({name, image}) => (
-        <React.Fragment key={name}>
-          <h3>{name}</h3>
-          <img src={image} alt={name} />
-        </React.Fragment>
-      ))}
-  </>
-);}
+  <div className="content">
+    <div className="container">
+      <div className="logo-content">
+        <img src={LogoRick} alt="Logo"  height="100px" width="auto"/>
+      </div>
+      <div className="cards-content">
+          {data.map(({id, name, image}) => (
+            <div className="card" key={id}>
+              <img src={image} alt={name} width="180px" height="auto" />
+              <h4>{name} </h4>
+            </div>
+          ))}
+      </div>
+    </div>
+  </div>
+)}
